@@ -141,8 +141,10 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ---------------------- FORM SUBMISSION (MOCK) ---------------------- */
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
-        loginForm.addEventListener('submit', async (e) => {
+        loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
+            e.stopPropagation();
+            
             const email = loginForm.querySelector('input[type="email"]').value;
             const passwordInput = loginForm.querySelector('input[type="password"], input#loginPassword');
 
@@ -161,6 +163,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (toggleBtn) toggleBtn.classList.remove('active');
                 }
                 
+                // Clear form fields
+                loginForm.reset();
+                
                 alert("Login Successful! Welcome User");
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
@@ -170,8 +175,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const signupForm = document.getElementById('signupForm');
     if (signupForm) {
-        signupForm.addEventListener('submit', async (e) => {
+        signupForm.addEventListener('submit', (e) => {
             e.preventDefault();
+            e.stopPropagation();
 
             if (!isOtpVerified) {
                 otpStatus.textContent = "Please verify OTP first";
@@ -208,6 +214,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     const toggleBtn = signupForm.querySelector('[data-target="confirmPassword"]');
                     if (toggleBtn) toggleBtn.classList.remove('active');
                 }
+                
+                // Clear form fields
+                signupForm.reset();
+                isOtpVerified = false;
+                otpSection.hidden = true;
                 
                 alert("Registration Successful! Please Login.");
                 submitBtn.textContent = originalText;
