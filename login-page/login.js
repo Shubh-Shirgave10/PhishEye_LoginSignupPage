@@ -161,9 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (toggleBtn) toggleBtn.classList.remove('active');
                 }
                 
-                // Clear form fields
-                loginForm.reset();
-                
                 alert("Login Successful! Welcome User");
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
@@ -211,11 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const toggleBtn = signupForm.querySelector('[data-target="confirmPassword"]');
                     if (toggleBtn) toggleBtn.classList.remove('active');
                 }
-                
-                // Clear form fields
-                signupForm.reset();
-                isOtpVerified = false;
-                otpSection.hidden = true;
                 
                 alert("Registration Successful! Please Login.");
                 submitBtn.textContent = originalText;
