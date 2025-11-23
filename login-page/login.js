@@ -5,6 +5,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const authForms = document.querySelectorAll('.auth-form');
     const switchLinks = document.querySelectorAll('[data-switch]');
 
+    /* ---------------------- PASSWORD TOGGLE ---------------------- */
+    const togglePasswordBtns = document.querySelectorAll('.toggle-password');
+    togglePasswordBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = btn.getAttribute('data-target');
+            const input = document.getElementById(targetId);
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.classList.add('active');
+            } else {
+                input.type = 'password';
+                btn.classList.remove('active');
+            }
+        });
+    });
+
     /* ---------------------- HEIGHT ADJUSTMENT ------------------ */
     function adjustHeight() {
         const activeForm = document.querySelector('.auth-form.active');
@@ -126,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = loginForm.querySelector('input[type="email"]').value;
-            const password = loginForm.querySelector('input[type="password"]').value;
+            const passwordInput = loginForm.querySelector('input[type="password"], input#loginPassword');
 
             // Mock Login Delay
             const submitBtn = loginForm.querySelector('button[type="submit"]');
@@ -135,6 +153,17 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
 
             setTimeout(() => {
+                // Reset password visibility
+                const loginPasswordInput = document.getElementById('loginPassword');
+                if (loginPasswordInput && loginPasswordInput.type === 'text') {
+                    loginPasswordInput.type = 'password';
+                    const toggleBtn = loginForm.querySelector('[data-target="loginPassword"]');
+                    if (toggleBtn) toggleBtn.classList.remove('active');
+                }
+                
+                // Clear form fields
+                loginForm.reset();
+                
                 alert("Login Successful! Welcome User");
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
@@ -169,6 +198,25 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
 
             setTimeout(() => {
+                // Reset password visibility
+                const signupPasswordInput = document.getElementById('signupPassword');
+                const confirmPasswordInput = document.getElementById('confirmPassword');
+                if (signupPasswordInput && signupPasswordInput.type === 'text') {
+                    signupPasswordInput.type = 'password';
+                    const toggleBtn = signupForm.querySelector('[data-target="signupPassword"]');
+                    if (toggleBtn) toggleBtn.classList.remove('active');
+                }
+                if (confirmPasswordInput && confirmPasswordInput.type === 'text') {
+                    confirmPasswordInput.type = 'password';
+                    const toggleBtn = signupForm.querySelector('[data-target="confirmPassword"]');
+                    if (toggleBtn) toggleBtn.classList.remove('active');
+                }
+                
+                // Clear form fields
+                signupForm.reset();
+                isOtpVerified = false;
+                otpSection.hidden = true;
+                
                 alert("Registration Successful! Please Login.");
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
