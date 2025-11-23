@@ -72,11 +72,32 @@
 
               <div class="input-group">
                 <label>Password</label>
-                <input
-                  type="password"
-                  placeholder="Enter your password"
-                  required
-                />
+                <div class="password-wrapper">
+                  <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Enter your password"
+                    required
+                  />
+                  <button
+                    type="button"
+                    class="toggle-password"
+                    data-target="loginPassword"
+                  >
+                    <svg
+                      class="eye-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                      ></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                  </button>
+                </div>
               </div>
 
               <div class="form-options">
@@ -153,20 +174,62 @@
 
               <div class="input-group">
                 <label>Password</label>
-                <input
-                  type="password"
-                  placeholder="Enter strong password"
-                  required
-                />
+                <div class="password-wrapper">
+                  <input
+                    type="password"
+                    id="signupPassword"
+                    placeholder="Enter strong password"
+                    required
+                  />
+                  <button
+                    type="button"
+                    class="toggle-password"
+                    data-target="signupPassword"
+                  >
+                    <svg
+                      class="eye-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                      ></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                  </button>
+                </div>
               </div>
 
               <div class="input-group">
                 <label>Confirm Password</label>
-                <input
-                  type="password"
-                  placeholder="Re-enter password"
-                  required
-                />
+                <div class="password-wrapper">
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Re-enter password"
+                    required
+                  />
+                  <button
+                    type="button"
+                    class="toggle-password"
+                    data-target="confirmPassword"
+                  >
+                    <svg
+                      class="eye-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                      ></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                  </button>
+                </div>
               </div>
 
               <button type="submit" class="primary-btn">

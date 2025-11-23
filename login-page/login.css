@@ -243,6 +243,47 @@ body {
     color: rgba(255, 255, 255, 0.3);
 }
 
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 45px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 6px;
+    transition: color 0.3s;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+}
+
+.eye-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.toggle-password:hover {
+    color: var(--primary);
+}
+
+.toggle-password.active {
+    color: var(--primary);
+}
+
 .form-options {
     display: flex;
     justify-content: space-between;
