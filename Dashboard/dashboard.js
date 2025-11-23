@@ -27,7 +27,7 @@
     }
 
     draw() {
-      ctx.fillStyle = gba(0, 168, 255, );
+      ctx.fillStyle = `rgba(0, 168, 255, ${this.opacity})`;
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fill();
