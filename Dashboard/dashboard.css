@@ -18,27 +18,53 @@ body {
 .nav {
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
-  padding: 15px 30px;
+  padding: 12px 18px;
   display: flex;
   justify-content: space-between;
-  background: rgba(10, 20, 45, 0.8);
+  align-items: center;
+  background: rgba(10, 20, 45, 0.9);
   backdrop-filter: blur(6px);
   z-index: 100;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-sizing: border-box;
 }
 
 .logo {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 22px;
+  font-weight: 700;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.login-btn {
-  padding: 8px 20px;
-  background: #00A8FF;
+.login-btn, #loginBtn {
+  padding: 10px 18px;
+  background: linear-gradient(90deg, #00A8FF, #00D1FF);
+  color: #042033;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 8px 18px rgba(0,168,255,0.22);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  z-index: 101;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+.login-btn:hover, #loginBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,168,255,0.28);
+}
+
+/* Ensure header elements don't push outside viewport on small screens */
+@media (max-width: 640px) {
+  .nav { padding: 8px 12px; }
+  .logo { font-size: 18px; }
+  .login-btn, #loginBtn { padding: 8px 12px; font-size: 14px; }
 }
 
 .hero {

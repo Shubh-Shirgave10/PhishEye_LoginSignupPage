@@ -1,14 +1,21 @@
-// BUTTON ANIMATION + REDIRECT
-document.getElementById("startBtn").addEventListener("click", () => {
-  let btn = document.getElementById("startBtn");
+// BUTTON ANIMATION (Get Started does not navigate — user requested no navigation)
+const startBtn = document.getElementById("startBtn");
+if (startBtn) {
+  startBtn.addEventListener("click", () => {
+    // keep the simple animation but do NOT redirect
+    startBtn.style.transform = "scale(1.25)";
+    setTimeout(() => (startBtn.style.transform = "scale(1)"), 300);
+  });
+}
 
-  btn.style.transform = "scale(1.25)";
-  setTimeout(() => (btn.style.transform = "scale(1)"), 300);
-
-  setTimeout(() => {
+// Login button: open the renamed login page
+const loginBtn = document.getElementById("loginBtn");
+if (loginBtn) {
+  loginBtn.addEventListener("click", () => {
+    // navigate to sibling login-page/login.html
     window.location.href = "../login-page/login.html";
-  }, 300);
-});
+  });
+}
 
 // WHY CARDS EXPAND
 document.querySelectorAll(".why-card").forEach(card => {
