@@ -7,7 +7,10 @@
   canvas.height = window.innerHeight;
 
   let particles = [];
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
   const particleCount = 50;
+  const attractionStrength = 0.002;
   
   class Particle {
     constructor() {
@@ -20,8 +23,24 @@
     }
 
     update() {
+      // Attract toward cursor
+      const dx = mouseX - this.x;
+      const dy = mouseY - this.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      
+      if (distance > 0) {
+        this.vx += (dx / distance) * attractionStrength;
+        this.vy += (dy / distance) * attractionStrength;
+      }
+
+      // Apply velocity with drag
+      this.vx *= 0.98;
+      this.vy *= 0.98;
+
       this.x += this.vx;
       this.y += this.vy;
+
+      // Bounce off edges
       if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
       if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
     }
@@ -49,6 +68,12 @@
   }
 
   animate();
+
+  // Track mouse movement
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
 
   window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
