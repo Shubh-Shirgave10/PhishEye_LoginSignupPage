@@ -10,11 +10,11 @@
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
   let mousePressed = false;
-  const particleCount = 100;
+  const particleCount = 250;
   const repulsionStrength = 0.3;
   const connectionDistance = 150;
   const repulsionDistance = 200;
-  
+
   class Particle {
     constructor() {
       this.x = Math.random() * canvas.width;
@@ -31,7 +31,7 @@
       const dx = mouseX - this.x;
       const dy = mouseY - this.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
-      
+
       if (distance > 0 && distance < repulsionDistance) {
         const force = mousePressed ? 0.6 : 0.3;
         this.vx -= (dx / distance) * repulsionStrength * force;

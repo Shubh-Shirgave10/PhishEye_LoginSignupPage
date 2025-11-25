@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings • PhishEye</title>
+  <link rel="stylesheet" href="settings.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="app-container">
+    <!-- Top Navigation Bar -->
+    <header class="top-bar">
+      <div class="nav-left">
+        <!-- User Icon Trigger -->
+        <button id="userMenuBtn" class="user-menu-btn">
+          <div class="user-avatar">U</div>
+        </button>
+
+        <!-- Logo -->
+        <div class="logo-wrapper">
+          <div class="logo-icon">
+            <i data-lucide="eye"></i>
+          </div>
+          <span class="brand-name">PhishEye</span>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="status-badge">
+          <div class="pulse-dot"></div>
+          <span>Live</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation Panel (Hidden by default) -->
+    <div id="navPanel" class="nav-panel hidden">
+      <div class="panel-header">
+        <div class="panel-user-info">
+          <div class="panel-user-avatar">
+            <i data-lucide="user"></i>
+          </div>
+          <div>
+            <span class="panel-user-name">User</span>
+            <span class="panel-user-email">user@example.com</span>
+          </div>
+        </div>
+      </div>
+      <nav class="panel-menu">
+        <button class="panel-item" data-tab="dashboard">
+          <i data-lucide="bar-chart-3"></i>
+          <span>Dashboard</span>
+        </button>
+        <button class="panel-item" data-tab="quickscan">
+          <i data-lucide="scan"></i>
+          <span>Quick Scan</span>
+        </button>
+        <button class="panel-item" data-tab="history">
+          <i data-lucide="clock"></i>
+          <span>History</span>
+        </button>
+        <button class="panel-item active" data-tab="settings">
+          <i data-lucide="settings"></i>
+          <span>Settings</span>
+        </button>
+        <div class="panel-divider"></div>
+        <button class="panel-item logout">
+          <i data-lucide="log-out"></i>
+          <span>Logout</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="settings-layout">
+        <!-- Left Sidebar: Settings Navigation -->
+        <aside class="settings-sidebar">
+          <div class="sidebar-header">
+            <h2>Settings</h2>
+          </div>
+          <nav class="settings-nav">
+            <button class="nav-btn active" data-target="appearance">
+              <i data-lucide="palette"></i>
+              <span>Appearance</span>
+            </button>
+            <button class="nav-btn" data-target="scan">
+              <i data-lucide="scan-line"></i>
+              <span>Scan Preferences</span>
+            </button>
+            <button class="nav-btn" data-target="security">
+              <i data-lucide="shield-check"></i>
+              <span>Security</span>
+            </button>
+            <button class="nav-btn" data-target="privacy">
+              <i data-lucide="lock"></i>
+              <span>Privacy & Data</span>
+            </button>
+            <button class="nav-btn" data-target="notifications">
+              <i data-lucide="bell"></i>
+              <span>Notifications</span>
+            </button>
+            <button class="nav-btn" data-target="about">
+              <i data-lucide="info"></i>
+              <span>About</span>
+            </button>
+          </nav>
+        </aside>
+
+        <!-- Right Content: Settings Forms -->
+        <section class="settings-content">
+
+          <!-- Appearance Section -->
+          <div id="appearance" class="settings-section active">
+            <div class="section-header">
+              <h3>Appearance</h3>
+              <p>Customize how PhishEye looks on your device.</p>
+            </div>
+
+            <div class="card">
+              <div class="form-group">
+                <div class="label-group">
+                  <label>Theme</label>
+                  <span class="sub-label">Select your preferred interface theme</span>
+                </div>
+                <div class="theme-switcher">
+                  <label class="theme-option">
+                    <input type="radio" name="theme" value="dark" checked>
+                    <span class="theme-box dark">
+                      <i data-lucide="moon"></i>
+                      <span>Dark</span>
+                    </span>
+                  </label>
+                  <label class="theme-option">
+                    <input type="radio" name="theme" value="light">
+                    <span class="theme-box light">
+                      <i data-lucide="sun"></i>
+                      <span>Light</span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="label-group">
+                  <label>Neon Glow</label>
+                  <span class="sub-label">Enable glowing effects for a futuristic look</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="neonGlow" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="form-group">
+                <div class="label-group">
+                  <label>Accent Color</label>
+                  <span class="sub-label">Choose a primary color for buttons and highlights</span>
+                </div>
+                <div class="accent-picker" id="accentPalette">
+                  <button class="color-btn active" data-color="#22d3ee" style="--bg: #22d3ee"></button>
+                  <button class="color-btn" data-color="#4ade80" style="--bg: #4ade80"></button>
+                  <button class="color-btn" data-color="#facc15" style="--bg: #facc15"></button>
+                  <button class="color-btn" data-color="#f87171" style="--bg: #f87171"></button>
+                  <button class="color-btn" data-color="#a78bfa" style="--bg: #a78bfa"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scan Preferences -->
+          <div id="scan" class="settings-section">
+            <div class="section-header">
+              <h3>Scan Preferences</h3>
+              <p>Configure how the detection engine operates.</p>
+            </div>
+
+            <div class="card">
+              <div class="form-group">
+                <div class="label-group">
+                  <label>Auto-scan on Load</label>
+                  <span class="sub-label">Automatically scan tabs when they finish loading</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="autoScanOnLoad">
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="form-group">
+                <div class="label-group">
+                  <label>Deep Scan Mode</label>
+                  <span class="sub-label">More thorough analysis (may be slower)</span>
+                </div>
+                <select id="deepScanMode" class="form-select">
+                  <option value="standard">Standard</option>
+                  <option value="advanced">Advanced</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <div class="label-group">
+                  <label>Auto-block Malicious Sites</label>
+                  <span class="sub-label">Prevent navigation to confirmed threats</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="autoBlock">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Security -->
+          <div id="security" class="settings-section">
+            <div class="section-header">
+              <h3>Security</h3>
+              <p>Manage your account security settings.</p>
+            </div>
+            <div class="card">
+              <div class="form-group">
+                <div class="label-group">
+                  <label>Two-Factor Authentication</label>
+                  <span class="sub-label">Add an extra layer of security</span>
+                </div>
+                <button class="btn btn-outline" id="setup2fa">Setup 2FA</button>
+              </div>
+              <div class="form-group">
+                <div class="label-group">
+                  <label>Session Timeout</label>
+                  <span class="sub-label">Auto-logout after inactivity</span>
+                </div>
+                <select id="sessionTimeout" class="form-select">
+                  <option value="15">15 minutes</option>
+                  <option value="60" selected>1 hour</option>
+                  <option value="240">4 hours</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Privacy -->
+          <div id="privacy" class="settings-section">
+            <div class="section-header">
+              <h3>Privacy & Data</h3>
+              <p>Control your data and history.</p>
+            </div>
+            <div class="card">
+              <div class="form-group">
+                <div class="label-group">
+                  <label>Save Scan History</label>
+                  <span class="sub-label">Keep a local log of scanned websites</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="saveHistory" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="form-group">
+                <div class="label-group">
+                  <label>History Retention</label>
+                  <span class="sub-label">How long to keep history logs</span>
+                </div>
+                <select id="historyTTL" class="form-select">
+                  <option value="7">7 Days</option>
+                  <option value="30">30 Days</option>
+                  <option value="90">90 Days</option>
+                  <option value="0">Forever</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <div class="label-group">
+                  <label class="text-danger">Delete Account</label>
+                  <span class="sub-label">Permanently remove all data</span>
+                </div>
+                <button class="btn btn-danger" id="deleteAccount">Delete Account</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notifications -->
+          <div id="notifications" class="settings-section">
+            <div class="section-header">
+              <h3>Notifications</h3>
+              <p>Manage alerts and emails.</p>
+            </div>
+            <div class="card">
+              <div class="form-group">
+                <div class="label-group">
+                  <label>Desktop Notifications</label>
+                  <span class="sub-label">Show popups for detected threats</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="enableNotif" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="form-group">
+                <div class="label-group">
+                  <label>Daily Summary</label>
+                  <span class="sub-label">Receive a daily email report</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="dailySummary">
+                  <span class="slider"></span>
+              </div>
+
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="settings.js"></script>
+</body>
+
+</html>

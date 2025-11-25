@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = btn.getAttribute('data-target');
             const input = document.getElementById(targetId);
-            
+
             if (input.type === 'password') {
                 input.type = 'text';
                 btn.classList.add('active');
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            
+
             const email = loginForm.querySelector('input[type="email"]').value;
             const passwordInput = loginForm.querySelector('input[type="password"], input#loginPassword');
 
@@ -155,20 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
 
             setTimeout(() => {
-                // Reset password visibility
-                const loginPasswordInput = document.getElementById('loginPassword');
-                if (loginPasswordInput && loginPasswordInput.type === 'text') {
-                    loginPasswordInput.type = 'password';
-                    const toggleBtn = loginForm.querySelector('[data-target="loginPassword"]');
-                    if (toggleBtn) toggleBtn.classList.remove('active');
-                }
-                
-                // Clear form fields
-                loginForm.reset();
-                
-                alert("Login Successful! Welcome User");
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
+                // Redirect to Main Dashboard
+                window.location.href = '../Main_Dash/mainDash.html';
             }, 1000);
         });
     }
@@ -214,12 +202,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     const toggleBtn = signupForm.querySelector('[data-target="confirmPassword"]');
                     if (toggleBtn) toggleBtn.classList.remove('active');
                 }
-                
+
                 // Clear form fields
                 signupForm.reset();
                 isOtpVerified = false;
                 otpSection.hidden = true;
-                
+
                 alert("Registration Successful! Please Login.");
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
