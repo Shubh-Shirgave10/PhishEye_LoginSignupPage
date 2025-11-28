@@ -81,8 +81,27 @@ function initSettingsNavigation() {
           section.classList.add('active');
         }
       });
+
+      if (targetId === 'about') {
+        ensureAboutFrameLoaded();
+      }
     });
   });
+
+  const activeSection = document.querySelector('.settings-section.active');
+  if (activeSection && activeSection.id === 'about') {
+    ensureAboutFrameLoaded();
+  }
+}
+
+let aboutFrameLoaded = false;
+function ensureAboutFrameLoaded() {
+  if (aboutFrameLoaded) return;
+  const aboutFrame = document.getElementById('aboutFrame');
+  if (!aboutFrame) return;
+  const src = aboutFrame.dataset.src || '../phisheye-about/index.html';
+  aboutFrame.src = src;
+  aboutFrameLoaded = true;
 }
 
 /* ---------- Load / Save Settings ---------- */
@@ -130,7 +149,7 @@ function applySettingsToUI() {
   // Accent
   document.documentElement.style.setProperty('--cyan-500', settings.accent);
   // Also update the picker UI
-  document.querySelectorAll('.color-btn').forEach(btn => {
+  document.querySelectorAll('.accent-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.color === settings.accent);
   });
 
@@ -200,11 +219,11 @@ function initControls() {
   const palette = document.getElementById('accentPalette');
   if (palette) {
     palette.addEventListener('click', (e) => {
-      const btn = e.target.closest('.color-btn');
+      const btn = e.target.closest('.accent-btn');
       if (!btn) return;
 
       // UI Update
-      document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.accent-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
       // Logic Update
@@ -248,4 +267,5 @@ function initControls() {
       }
     });
   }
+
 }
