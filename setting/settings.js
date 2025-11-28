@@ -99,7 +99,7 @@ function ensureAboutFrameLoaded() {
   if (aboutFrameLoaded) return;
   const aboutFrame = document.getElementById('aboutFrame');
   if (!aboutFrame) return;
-  const src = aboutFrame.dataset.src || '../phisheye-about/index.html';
+  const src = aboutFrame.dataset.src || '../about/about.html';
   aboutFrame.src = src;
   aboutFrameLoaded = true;
 }
